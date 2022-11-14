@@ -5,13 +5,18 @@ class GameBoard extends Component{
     constructor(props){
         super(props);
         this.state = {
-            letters: this.props.originalLetters
+            letters: this.props.originalLetters,
+            choosedLetters: ["A", "B"]
         }
     }
 
     render() {
         const letters = this.state.letters.map((letter)=>{
             return <Letter letter={letter} key={letter} />
+        });
+
+        const choosedLetters = this.state.choosedLetters.map((choosedLetter)=>{
+            return <div>{choosedLetter}</div>
         });
 
         return (
@@ -24,6 +29,9 @@ class GameBoard extends Component{
                 <div className="w-3/5 h-full">
                     <div className="grid grid-cols-9 grid-rows-3 gap-4 my-12 mx-12">
                         {letters}
+                    </div>
+                    <div className="grid grid-cols-9 grid-rows-3 gap-4 my-12 mx-12">
+                        {choosedLetters}
                     </div>
                 </div>
             </div>
